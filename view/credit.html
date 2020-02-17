@@ -1,0 +1,74 @@
+<div class="container">
+    <div class="row centered-form">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Please add your <small> Credit</small></h3>
+                </div>
+                <div class="panel-body">
+                    <form role="form">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="text" name="description" id="description" class="form-control"
+                                        placeholder="Description" ng-model="description" >
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+
+                                    <select ng-model="selectedCategory" class="custom-select"  ng-options="x for x in category"  ng-change="onchange()">
+                                        <option selected>Choose category...</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+
+                                    <input type="text" name="value" id="value" class="form-control"
+                                        placeholder="value" ng-model="value" mask='€99,999.99'>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="submit" value="Register" class="btn btn-info btn-block" ng-click="onclickSubmit()" >
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                <div>
+                    <table class="table" ng-if="credit.length > 0">
+                        <thead>
+                            <tr>
+                                <th>
+                                    Description
+                                </th>
+                                <th>
+                                    category
+                                </th>
+                                <th>
+                                    Value
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr  ng-repeat="item in credit">
+                                <td>{{item.description}}</td>
+                                <td>{{item.category}}</td>
+                                <td>{{item.value}}</td>
+                               
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

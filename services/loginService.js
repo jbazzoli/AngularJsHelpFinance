@@ -1,6 +1,15 @@
-// SERVICES
-myApp.service('loginService', function() {
-   
-    this.user = "logado";
-    
-});
+
+(function() {
+	'use strict';
+	
+	angular.module("myApp")
+		.service("LoginService", loginService);
+	
+        loginService.inject = [];
+	
+	function loginService() {
+		
+        var self = this;
+        self.user = "logado";
+    }
+})();

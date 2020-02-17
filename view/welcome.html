@@ -1,0 +1,83 @@
+<div class="row">
+    <div class="card text-white bg-danger mb-3" style="max-width: 18rem;">
+        <div class="card-header">Debit </div>
+        <div class="card-body">
+          <h5 class="card-title">Debit currency month</h5>
+            <table class="table" style="color: #fff;">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">Value</th>
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr  ng-repeat="item in debit">
+                        <td></td>
+                        <td>
+                            {{item.description}}
+                        </td>
+                        <td>
+                            {{item.value | currency: '€' }}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+      </div>
+      <div class="card text-white bg-success mb-3" style="max-width: 18rem; margin-left: 5%;">
+        <div class="card-header">Credit </div>
+        <div class="card-body">
+          <h5 class="card-title">Credit currency month</h5>
+            <table class="table" style="color: #fff;">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">Value</th>
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr  ng-repeat="item in credit">
+                        <td></td>
+                        <td>
+                            {{item.description}}
+                        </td>
+                        <td>
+                            {{item.value | currency: '€' }}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+      </div>
+      <div class="card text-white bg-primary mb-3" style="max-width: 18rem; margin-left: 5%;">
+        <div class="card-header">Balance</div>
+        <div class="card-body">
+          <h5 class="card-title">Balance</h5>
+            <table class="table" style="color: #fff;">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">Value</th>
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr  ng-repeat="item in balance">
+                        <td></td>
+                        <td>
+                            {{item.description}}
+                        </td>
+                        <td>
+                            {{item.value | currency: '€' }}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+      </div>
+</div>
