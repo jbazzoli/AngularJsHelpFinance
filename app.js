@@ -1,1 +1,4 @@
-var myApp = angular.module('myApp', ['ngRoute', 'ngResource']);
+(function(){
+    'use strict';
+    angular.module('myApp',['ngRoute', 'ngResource','chart.js']);
+})();
