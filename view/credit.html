@@ -6,18 +6,18 @@
                     <h3 class="panel-title">Please add your <small> Credit</small></h3>
                 </div>
                 <div class="panel-body">
-                    <form role="form">
+                    <form class="form" name="creditForm">
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <input type="text" name="description" id="description" class="form-control"
-                                        placeholder="Description" ng-model="description" >
+                                        placeholder="Description" ng-model="vm.description" required>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
 
-                                    <select ng-model="selectedCategory" class="custom-select"  ng-options="x for x in category"  ng-change="onchange()">
+                                    <select ng-model="vm.selectedCategory" name="category" class="custom-select"  ng-options="x for x in vm.category"  ng-change="onchange()" required>
                                         <option selected>Choose category...</option>
                                     </select>
                                 </div>
@@ -28,7 +28,7 @@
                                 <div class="form-group">
 
                                     <input type="text" name="value" id="value" class="form-control"
-                                        placeholder="value" ng-model="value" mask='€99,999.99'>
+                                        ng-model="vm.value" ng-currency currency-symbol="€" required>
 
                                 </div>
                             </div>
@@ -36,34 +36,35 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <input type="submit" value="Register" class="btn btn-info btn-block" ng-click="onclickSubmit()" >
+                                    
+                                    <button type="submit" ng-disabled="!(creditForm.description.$valid && creditForm.category.$valid  && creditForm.value.$valid)" 
+                                    value="Register" class="btn btn-info btn-block" ng-click="vm.onclickSubmit()" >Register</button>
                                 </div>
                             </div>
                         </div>
                     </form>
-                <div>
-                    <table class="table" ng-if="credit.length > 0">
+                <div ng-if="vm.credit.length > 0">
+                    <table datatable="ng" dt-options="vm.dtOptions"  class="row-border hover" width="100%" >
                         <thead>
                             <tr>
-                                <th>
-                                    Description
-                                </th>
-                                <th>
-                                    category
-                                </th>
-                                <th>
-                                    Value
-                                </th>
+                             <th>id</th>
+                             <th>description</th>
+                             <th>category</th>
+                             <th>value</th>
+                             <th>actions</th>
                             </tr>
-                        </thead>
-                        <tbody>
-                            <tr  ng-repeat="item in credit">
-                                <td>{{item.description}}</td>
-                                <td>{{item.category}}</td>
-                                <td>{{item.value}}</td>
-                               
+                           </thead>
+                           <tbody>
+                            <tr ng-repeat="item in vm.credit">
+                             <td>{{item.id}}</td>
+                             <td>{{item.description}}</td>
+                             <td>{{item.category }}</td>
+                             <td>{{item.value}}</td>
+                             <td><button type="button" ng-click="vm.onclickEdit(item.id)" class="btn btn-warning btn-xs">Edit</button>
+                             |<button type="button" ng-click="vm.onclickDelete(item.id)" class="btn btn-danger btn-xs">Delete</button> </td>
+                                
                             </tr>
-                        </tbody>
+                           </tbody>
                     </table>
                 </div>
 

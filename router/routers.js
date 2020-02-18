@@ -19,7 +19,8 @@
         })
         .when('/isertCredit', {
             templateUrl: 'view/credit.html',
-            controller: 'CreditController'
+            controller: 'CreditController',
+            controllerAs:"vm",
         })
         .when('/isertDebit', {
             templateUrl: 'view/debit.html',
