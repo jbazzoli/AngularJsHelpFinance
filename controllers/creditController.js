@@ -14,9 +14,7 @@
       $scope.credit = [];
       $scope.creditModel = {
           description: '',
-
-          value: 0.0,
-
+          value: '',
           category: ''
       }
       $scope.onchange = function (){
@@ -24,9 +22,7 @@
       }
       $scope.clear = function (){
         $scope.description = '';
-
         $scope.value = '';
-
         $scope.selectedCategory = '';
 
       }
@@ -34,7 +30,7 @@
         $scope.creditModel.description = $scope.description;
         $scope.creditModel.value = $scope.value;
         $scope.creditModel.category = $scope.selectedCategory;
-
+        console.log($scope.credit);
         $scope.credit.push(angular.copy($scope.creditModel));
         $scope.clear();
       }
