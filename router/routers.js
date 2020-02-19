@@ -25,7 +25,8 @@
         })
         .when('/insertDebit', {
             templateUrl: 'view/debit.html',
-            controller: 'DebitController'
+            controller: 'DebitController',
+            controllerAs:"vm"
         })
         .when('/register', {
             templateUrl: 'view/register.html',

@@ -6,7 +6,7 @@
   creditController.inject = ['$rootScope', '$filter'];
 
 
-  function creditController($rootScope, $filter, DTOptionsBuilder, DTColumnBuilder) {
+  function creditController($rootScope, $filter, DTOptionsBuilder) {
     var vm = this;
 
     vm.user = $rootScope.loggedUser;

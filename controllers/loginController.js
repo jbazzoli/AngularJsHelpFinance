@@ -21,8 +21,6 @@
         vm.onLogin = function()
         {
            
-          
-           
             if(vm.user.length > 0 && vm.password.length >0){
                 vm.isLoged = true;
                 LoginService.clientLogin();
