@@ -23,7 +23,7 @@
            
           
            
-            if(vm.user.length > 0 || vm.password.length >0){
+            if(vm.user.length > 0 && vm.password.length >0){
                 vm.isLoged = true;
                 LoginService.clientLogin();
                 $rootScope.loggedUser = vm.user;
