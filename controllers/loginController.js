@@ -5,39 +5,49 @@
 
 	angular.module("myApp")
             .controller("LoginController", loginController);
-            loginController.inject = [ '$scope','LoginService', '$location', '$rootScope' ];
+            loginController.inject = [ 'LoginService', '$location', '$rootScope' ];
 
     
    
 
-    function loginController(LoginService, $scope,$location, $rootScope) {
-        $scope.user = LoginService.user;
-        $scope.isLoged = false;
-        $rootScope.loggedUser = undefined;
+    function loginController(LoginService,$location, $rootScope) {
+        var vm = this;
+        vm.user = LoginService.user;
+        vm.isLoged = false;
+        vm.loggedUser = undefined;
        /* $scope.$watch('user', function() {
             LoginService.user = $scope.user; 
         });*/
-        $scope.onLogin = function()
+        vm.onLogin = function()
         {
-            console.log($scope.password);
-            console.log($scope.user);
+           
           
            
-            if($scope.user.length > 0 || $scope.password.length >0){
-                $scope.isLoged = true;
-                $rootScope.loggedUser = $scope.user;
+            if(vm.user.length > 0 || vm.password.length >0){
+                vm.isLoged = true;
+                LoginService.clientLogin();
+                $rootScope.loggedUser = vm.user;
             }
             else {
-                $scope.isLoged = false;
+                vm.isLoged = false;
+                LoginService.clientLogout();
                 $rootScope.loggedUser = undefined;
             }
-            if( $scope.isLoged) {
+            if( vm.isLoged) {
                
                 $location.path( "/home" );
             }
             else {
-                $scope.loginError = "Invalid user/pass.";
+                vm.loginError = "Invalid user/pass.";
             }
         }
+
+        vm.onLogOut = function(){
+            vm.isLoged = false;
+            LoginService.clientLogout();
+             $rootScope.loggedUser = undefined;
+             $location.path( "/login" );
+            }
     }
+    
 })();
