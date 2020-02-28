@@ -26,7 +26,14 @@
         .when('/insertDebit', {
             templateUrl: 'view/debit.html',
             controller: 'DebitController',
-            controllerAs:"vm"
+            controllerAs:"vm",
+            resolve: {
+        		debit : function(DebitService){
+					
+					return DebitService.get('debit');
+				}
+				
+			}
         })
         .when('/register', {
             templateUrl: 'view/register.html',

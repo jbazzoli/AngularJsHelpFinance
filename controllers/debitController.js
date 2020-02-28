@@ -3,9 +3,10 @@
   
     angular.module("myApp")
       .controller("DebitController", debitController);
-      debitController.inject = ['$scope', '$rootScope'];
-  
-      function debitController($rootScope, $filter, DTOptionsBuilder) {
+      debitController.inject = ['$scope', '$rootScope','debit'];
+   // debitController.inject = ['DebitService','$scope', '$rootScope'];
+      function debitController($rootScope, $filter, DTOptionsBuilde,debit) {
+      //function debitController(DebitService,$rootScope, $filter, DTOptionsBuilde) {
         var vm = this;
     
         vm.user = $rootScope.loggedUser;
@@ -13,13 +14,26 @@
         vm.value = '';
         vm.debit = [];
         vm.countId = 1;
+
         vm.debitModel = {
           id: 0,
           description: '',
           value: '',
           category: ''
         }
-    
+
+        // Is posible to put this in route 
+        vm.init = function(){
+          /* DebitService.get('debit').then(function(response) {
+					
+            vm.debitModel = response;
+            console.log(vm.debitModel);
+            vm.debit.push(vm.debitModel[0]);
+            
+          });*/
+          
+          vm.debit.push(debit);
+        }
     
         vm.dtOptions = DTOptionsBuilder.newOptions()
     
@@ -45,6 +59,7 @@
     
     
         vm.onclickSubmit = function () {
+          vm.clear();
           vm.debitModel.description = vm.description;
     
           vm.debitModel.value = $filter('currency')(vm.value, '€');
@@ -56,6 +71,6 @@
     
         }
     
-    
+        vm.init();
       }
   })();
