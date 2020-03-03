@@ -17,7 +17,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
 
-                                    <select ng-model="vm.selectedCategory" name="category" class="custom-select"  ng-options="x for x in vm.category"  ng-change="onchange()" required>
+                                    <select ng-model="vm.selectedCategory" name="category" class="custom-select"  ng-options="item as item.label for item in vm.category track by item.id"  ng-change="onchange()" required>
                                         <option selected>Choose category...</option>
                                     </select>
                                 </div>
@@ -43,7 +43,7 @@
                             </div>
                         </div>
                     </form>
-                <div ng-if="vm.debit.length > 0">
+                <div ng-if="vm.debitTable.length > 0">
                     <table datatable="ng" dt-options="vm.dtOptions"  class="row-border hover" width="100%" >
                         <thead>
                             <tr>
@@ -55,13 +55,13 @@
                             </tr>
                            </thead>
                            <tbody>
-                            <tr ng-repeat="item in vm.debit">
+                            <tr ng-repeat="item in vm.debitTable">
                              <td>{{item.id}}</td>
                              <td>{{item.description}}</td>
                              <td>{{item.category }}</td>
-                             <td>{{item.value}}</td>
-                             <td><button type="button" ng-click="vm.onclickEdit(item.id)" class="btn btn-warning btn-xs">Edit</button>
-                             |<button type="button" ng-click="vm.onclickDelete(item.id)" class="btn btn-danger btn-xs">Delete</button> </td>
+                             <td>{{item.value | currency:'€' }}</td>
+                             <td><button type="button" ng-click="vm.buttonClicked()" class="btn btn-warning btn-xs">Edit</button>
+                             |<button type="button" ng-click="vm.onclickDelete(item)" class="btn btn-danger btn-xs">Delete</button> </td>
                                 
                             </tr>
                            </tbody>

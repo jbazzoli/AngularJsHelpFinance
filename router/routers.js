@@ -28,9 +28,9 @@
             controller: 'DebitController',
             controllerAs:"vm",
             resolve: {
-        		debit : function(DebitService){
+        		debitInitial : function(RestService){
 					
-					return DebitService.get('debit');
+					return RestService.get('debit');
 				}
 				
 			}
