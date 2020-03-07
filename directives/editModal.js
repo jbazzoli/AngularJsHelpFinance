@@ -1,21 +1,28 @@
-app.directive('editModal', function () {
-  
+
+(function () {
+  'use strict';
+  angular.module("myApp").directive('editModal', function () {
+
     return {
       restrict: 'E',
       transclude: true,
       scope: {
-        showModal: '='
+        showModal: '=',
+        item: '=',
+        edit: '='
       },
-      template: "<div class='modal-backdrop' ng-show='showModal'></div>" +
-        "<div class='modal' ng-show='showModal'>" +
-           "<h1 ng-click='modalClicked()'>{{modalText}}</h1>" +
-        "</div>",
+      templateUrl: '../view/modalEdit.html',
       link: function (scope, element, attrs) {
         scope.modalText = "Click to dismiss";
-        
+
         scope.modalClicked = function () {
           scope.showModal = false;
         }
+        scope.onclickSubmit = function (){
+          console.log('teste');
+           scope.edit(scope.item);
+        }
       }
     }
-  });
+  })
+})();

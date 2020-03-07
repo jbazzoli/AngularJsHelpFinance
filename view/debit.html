@@ -42,7 +42,11 @@
                                 </div>
                             </div>
                         </div>
-                    </form>
+                    </form> 
+                </div>
+                
+                <edit-modal show-modal="vm.modal.show" item="vm.modal.item" edit="vm.onclickEdit" />
+               
                 <div ng-if="vm.debitTable.length > 0">
                     <table datatable="ng" dt-options="vm.dtOptions"  class="row-border hover" width="100%" >
                         <thead>
@@ -60,7 +64,7 @@
                              <td>{{item.description}}</td>
                              <td>{{item.category }}</td>
                              <td>{{item.value | currency:'€' }}</td>
-                             <td><button type="button" ng-click="vm.buttonClicked()" class="btn btn-warning btn-xs">Edit</button>
+                             <td><button type="button" ng-click="vm.buttonClicked(item)" class="btn btn-warning btn-xs">Edit</button>
                              |<button type="button" ng-click="vm.onclickDelete(item)" class="btn btn-danger btn-xs">Delete</button> </td>
                                 
                             </tr>

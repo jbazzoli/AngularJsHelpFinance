@@ -1,0 +1,11 @@
+<div class='modal-backdrop' ng-show='showModal'></div>
+<div class='modal' ng-show='showModal'>
+    <h1 ng-click='modalClicked()'>{{modalText}}</h1>
+    <input class='form-control' ng-model='item.description' />
+    <input type='text' class='form-control' ng-model='item.value' />
+    <input class='form-control' ng-model='item.category' />
+
+    <button type="submit" 
+    value="Edit" class="btn btn-info btn-block" ng-click="onclickSubmit()" >Edit</button>
+
+</div>

@@ -22,20 +22,23 @@
       category: ''
     }
 
-// http://embed.plnkr.co/YLeUmf/ modal que vc precisa
     vm.init = function () {
 
       vm.debitTable = debitInitial;
     }
 
-    vm.ngView = "the-view.html";
+   
   
     vm.modal= {
-      show: true
+      show: false,
+      item: []
     };
     
-    vm.buttonClicked = function () {
-     vm.modal.show = true;
+    vm.buttonClicked = function ( item) {
+     
+       vm.modal.show = true;
+       vm.modal.item = item;
+       
     };
 
     vm.dtOptions = DTOptionsBuilder.newOptions()
